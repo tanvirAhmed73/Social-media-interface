@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#F5F5F5] my-[20px];
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded;
+  }
+  .btn-primary {
+    @apply bg-blue-500 text-white hover:bg-blue-600;
+  }
+  .input {
+    @apply w-full p-2 border rounded;
+  }
+  .input-bordered {
+    @apply border-gray-300;
+  }
+  .form-control {
+    @apply space-y-2;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow;
+  }
+  .card-body {
+    @apply p-6;
+  }
+}
+
+/* Custom styles for the slider */
+.featured-slider .slick-prev,
+.featured-slider .slick-next {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.featured-slider .slick-prev:hover,
+.featured-slider .slick-next:hover {
+  background: white;
+}
+
+.featured-slider .slick-prev {
+  left: -15px;
+}
+
+.featured-slider .slick-next {
+  right: -15px;
+}
+
+.featured-slider .slick-track {
+  margin-left: 0;
+}
