@@ -1,14 +1,15 @@
-import React from "react";
-import { artists } from "../../../mocks/data";
+import { useState } from "react";
+import { artists } from "../../../../mocks/data";
 
 const RightSidebar = () => {
-  const [activeTab, setActiveTab] = React.useState<"artists" | "photographers">(
+  const [activeTab, setActiveTab] = useState<"artists" | "photographers">(
     "artists"
   );
+
   return (
-    <div>
-      <div className="w-[260px] h-[600px] rounded-[10px] ">
-        <div className="flex gap-4  px-4">
+    <div className="w-full">
+      <div className="w-full  rounded-[10px] lg:h-[600px]">
+        <div className="flex gap-4 px-4">
           <button
             className={`pb-4 text-sm font-medium ${
               activeTab === "artists"
@@ -22,7 +23,7 @@ const RightSidebar = () => {
           <button
             className={`pb-4 text-sm font-medium ${
               activeTab === "photographers"
-                ? " text-black font-semibold"
+                ? "text-black font-semibold"
                 : "text-gray-500"
             }`}
             onClick={() => setActiveTab("photographers")}
@@ -31,12 +32,12 @@ const RightSidebar = () => {
           </button>
         </div>
 
-        <div className="h-[500px] overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thumb-rounded-full hover:scrollbar-thumb-gray-400">
-          <div className="space-y-4 px-4 py-6 ">
+        <div className="overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto lg:h-[500px] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thumb-rounded-full hover:scrollbar-thumb-gray-400">
+          <div className="flex lg:flex-col gap-4 px-4 py-6 min-w-min">
             {artists.map((artist) => (
               <div
                 key={artist.id}
-                className="group relative h-[100px] overflow-hidden rounded-xl"
+                className="flex-shrink-0 w-[200px] lg:w-auto relative h-[100px] overflow-hidden rounded-xl"
               >
                 <img
                   src={artist.coverImage}
@@ -63,10 +64,11 @@ const RightSidebar = () => {
             ))}
           </div>
         </div>
-        <div className="flex justify-around mt-3 text-xs text-gray-500">
-          <p>Privacy </p>
+
+        <div className="hidden lg:flex justify-around mt-3 text-xs text-gray-500">
+          <p>Privacy</p>
           <p>Terms of Service</p>
-          <p> Cookie Notice</p>
+          <p>Cookie Notice</p>
         </div>
       </div>
     </div>

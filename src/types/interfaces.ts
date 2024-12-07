@@ -30,3 +30,18 @@ export interface FeaturedItem {
   price: number;
   rating: number;
 }
+
+export interface FeaturedCardProps {
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+  rating: number;
+}
+
+export interface PostCardProps {
+  post: Post;
+  isExpanded: boolean;
+  onToggleReadMore: (id: number) => void;
+  formatNumber: (num: number) => string | number;
+}

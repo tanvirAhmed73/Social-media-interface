@@ -1,10 +1,10 @@
 "use client";
 
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
 import Layout from "./Layout/Layout";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
   return (

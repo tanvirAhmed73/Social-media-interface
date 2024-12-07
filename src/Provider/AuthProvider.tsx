@@ -3,12 +3,13 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   User,
 } from "firebase/auth";
 import { ReactNode, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { auth } from "../firebase.init";
+import { auth, googleProvider } from "../firebase.init";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -69,6 +70,15 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (error) {
+      console.error("Google sign in failed:", error);
+      throw error;
+    }
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("Auth state changed:", currentUser);
@@ -85,6 +95,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     signUp,
     signIn,
     logOut,
+    signInWithGoogle,
   };
 
   return (
